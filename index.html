@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Dokument</title>
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+        <script>
+
+            function sprawdzenie(){
+
+                var zmiennaA = document.getElementById("pobierzBokA").value;
+                var zmiennaB = document.getElementById("pobierzBokB").value;
+                var zmiennaC = document.getElementById("pobierzBokC").value;
+
+                var a = parseFloat(zmiennaA);
+                var b = parseFloat(zmiennaB);
+                var c = parseFloat(zmiennaC);
+                if(isNaN(zmiennaA) || isNaN(zmiennaB) || isNaN(zmiennaC) || zmiennaA=="" || zmiennaB=="" || zmiennaC=="")
+                {
+                    document.getElementById("false").innerHTML="PODANE ZMIENNE NIE SĄ LICZBAMI BĄDŹ NIE ZOSTAŁY PODANE";
+                    document.getElementById("true").innerHTML="";
+                    document.getElementById("wynik").innerHTML="";
+                    return;
+                }
+                else if(a==2 && b==1 && c==37 || a==21 && b==3 && c==7 || a==2 && b==13 && c==7){
+                    window.open("https://www.mbludzm.pl/_galeria/teksty/sw-jan-pawel-ii-a6c-656.jpg");
+                }
+                else
+                {
+                    if(a+b>c && b+c>a && a+c>b){
+                        document.getElementById("true").innerHTML="TAKI TRÓJKĄT DA SIĘ ZBUDOWAĆ";
+                        document.getElementById("false").innerHTML="";
+                        document.getElementById("wynik").innerHTML="";
+                        return;
+                    }
+                    else{
+                        document.getElementById("false").innerHTML="TAKIEGO TRÓJKĄTA NIE DA SIĘ ZBUDOWAĆ";
+                        document.getElementById("true").innerHTML="";
+                        document.getElementById("wynik").innerHTML="";
+                        return;
+                    }
+                }
+            }
+
+            function obliczenie(){
+
+                if(document.getElementById("false").innerHTML!="" || document.getElementById("true").innerHTML!=""){
+                    if(document.getElementById("false").innerHTML=="")
+                    {
+                    var a = parseFloat(document.getElementById("pobierzBokA").value);
+                    var b = parseFloat(document.getElementById("pobierzBokB").value);
+                    var c = parseFloat(document.getElementById("pobierzBokC").value);
+                    var p = (a+b+c)/2;
+
+                    var pole = Math.sqrt(p*(p-a)*(p-b)*(p-c));
+                    document.getElementById("wynik").innerHTML="WYNIK: "+ Math.round(pole * 100) / 100;
+                    document.getElementById("true").innerHTML="";
+                    }
+                    else{
+                        document.getElementById("wynik").innerHTML="TRÓJKĄTA NIE DA SIĘ ZBUDOWAĆ BĄDŹ ZMIENNA JEST BŁĘDNA";
+                        document.getElementById("false").innerHTML=""
+                    }
+                }
+                else{
+                    document.getElementById("wynik").innerHTML="NIE SPRAWDZIŁEŚ CZY TRÓJKĄT DA SIĘ ZBUDOWAĆ";
+                }
+            }
+        </script>
+</head>
+<body>
+    <main>
+        
+        <header>
+
+            <img id="logo" src="img/logo.png" alt="Logo strony">
+            <h1>HERON</h1>
+
+        </header>
+
+        <article>
+            <section>
+
+                <form id="pobierzDane">
+
+                    <fieldset>
+                        <legend>DŁUGOŚĆ BOKÓW</legend>
+
+                        <br>
+
+                        <label for="bokA">A: </label>
+                        <input type="text" id="pobierzBokA"><br><br>
+
+                        <label for="bokB">B: </label>
+                        <input type="text" id="pobierzBokB"><br><br>
+
+                        <label for="bokC">C: </label>
+                        <input type="text" id="pobierzBokC"><br><br>
+
+                    </fieldset>
+                </form>
+
+            </section>
+            <section>
+                <form id="przyciski">
+
+                    <fieldset>
+                        <legend>WYNIKI</legend>
+
+                        <label for="sprawdz">Sprawdź czy da się zbudować taki trójkąt: </label>
+                        <input type="button" id="sprawdz" onClick="sprawdzenie();" value="Sprawdź"> <br><br>
+                        <label for="oblicz">Oblicz pole trójkąta: </label>
+                        <input type="button" id="oblicz" onClick="obliczenie();" value="Oblicz"><br>
+                        <p id="true"></p>
+                        <p id="false"></p>
+                        <p id="wynik"></p>
+
+                    </fieldset>
+                </form>
+
+            
+
+
+            </section>
+        </article>
+
+        <footer>
+            <h2>AUTOR: PIOTR GAŁA</h2>
+        </footer>
+
+    </main>
+    
+</body>
+</html>
